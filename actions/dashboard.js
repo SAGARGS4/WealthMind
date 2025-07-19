@@ -101,7 +101,6 @@ export async function createAccount(data) {
 			where: { userId: user.id },
 		});
 
-		// If it's the first account, make it default regardless of user input
 		// If not, use the user's preference
 		const shouldBeDefault =
 			existingAccounts.length === 0 ? true : data.isDefault;
@@ -120,7 +119,7 @@ export async function createAccount(data) {
 				...data,
 				balance: balanceFloat,
 				userId: user.id,
-				isDefault: shouldBeDefault, // Override the isDefault based on our logic
+				isDefault: shouldBeDefault,
 			},
 		});
 
